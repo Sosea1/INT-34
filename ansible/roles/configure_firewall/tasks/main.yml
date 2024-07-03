@@ -1,0 +1,39 @@
+---
+- name: Install UFW
+  ansible.builtin.apt:
+    name: ufw
+    state: present
+    update_cache: yes
+
+- name: Set incoming policy to deny
+  ansible.builtin.ufw:
+    default: deny
+    direction: incoming
+
+- name: Allow HTTP
+  ansible.builtin.ufw:
+    rule: allow
+    port: 80
+    proto: tcp
+
+- name: Allow HTTPS
+  ansible.builtin.ufw:
+    rule: allow
+    port: 443
+    proto: tcp
+
+- name: Allow SSH
+  ansible.builtin.ufw:
+    rule: allow
+    port: 22
+    proto: tcp
+
+- name: Allow PostgreSQL
+  ansible.builtin.ufw:
+    rule: allow
+    port: 5432
+    proto: tcp
+
+- name: Enable UFW
+  ansible.builtin.ufw:
+    state: enabled

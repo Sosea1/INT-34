@@ -1,0 +1,19 @@
+---
+- name: Install Fail2Ban
+  ansible.builtin.apt:
+    name: fail2ban
+    state: present
+    update_cache: yes
+
+- name: Copy configuration file
+  ansible.builtin.template:
+    src: jail.local.j2
+    dest: /etc/fail2ban/jail.local
+    mode: '0644'
+    owner: root
+    group: root
+
+- name: Restart Fail2Ban
+  ansible.builtin.systemd:
+    name: fail2ban
+    state: restarted

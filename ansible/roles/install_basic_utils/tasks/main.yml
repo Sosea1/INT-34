@@ -1,0 +1,17 @@
+---
+- name: Apt update
+  ansible.builtin.apt:
+    update_cache: yes
+
+- name: Install basic utils
+  ansible.builtin.apt:
+    name: "{{item}}"
+    state: present
+    update_cache: yes
+  loop:
+    - net-tools
+    - curl
+    - wget
+    - htop
+    - ncdu
+    - vim

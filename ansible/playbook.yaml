@@ -1,0 +1,12 @@
+---
+- name: configure Debian 10 Server
+  hosts: debian
+  become: true
+  roles:
+    - install_basic_utils
+    - install_fail2ban
+    - create_users
+    - configure_sysctl
+    - configure_ssh
+    - install_postgresql
+    - configure_firewall
