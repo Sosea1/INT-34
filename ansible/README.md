@@ -6,3 +6,7 @@
 ansible-playbook playbook.yaml
 ```
 Все переменные прописаны в inventory, можно и в .env было, но так я думаю будет удобнее проверять
+Проверить подключение к **PostgreSQL**:
+```
+psql -U postgres -h <host_ip> -p 5432
+```
